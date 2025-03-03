@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VisioScale - Medição por Câmera</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+    <div class="header">
+        <h1>VisioScale 0.1</h1>
+    </div>
+    
+    <div class="container">
+        <div class="camera-container">
+            <img id="video-stream" src="{{ url_for('video_feed') }}" alt="Stream da câmera">
+            <canvas id="canvas-overlay"></canvas>
+            <div class="status-indicator" id="status-indicator">Aguardando...</div>
+            
+            <div class="guide-overlay" id="guide-overlay">
+                <div>
+                    <h2>Como usar:</h2>
+                    <p>1. Calibre primeiro com um objeto de referência conhecido (cartão de crédito, folha A4)</p>
+                    <p>2. Aponte para objetos e clique para medir</p>
+                    <p>3. Movimente a câmera lentamente para mapeamento</p>
+                    <button class="btn" id="start-btn">Começar</button>
+                </div>
+            </div>
+            
+            <div class="loading" id="loading">
+                <div class="loading-spinner"></div>
+                <p>Carregando modelos de IA...</p>
+            </div>
+        </div>
+        
+        <div class="reference-setup" id="reference-setup">
+            <h3>Calibração de Referência</h3>
+            <p>Escolha um objeto de tamanho conhecido e posicione-o na frente da câmera</p>
+            <select id="reference-type" class="reference-select">
+                <option value="credit-card">Cartão de Crédito (85.6 x 53.98 mm)</option>
+                <option value="a4-paper">Folha A4 (210 x 297 mm)</option>
+                <option value="custom">Objeto Personalizado</option>
+            </select>
+            <div id="custom-reference" style="display: none; margin-top: 1rem;">
+                <input type="number" id="reference-width" placeholder="Largura (cm)">
+                <input type="number" id="reference-height" placeholder="Altura (cm)">
+            </div>
+            <button class="btn" id="calibrate-btn">Calibrar</button>
+        </div>
+        
+        <div class="measurements">
+            <h3>Medições</h3>
+            <div id="measurements-list">
+                <div class="measurement-item">
+                    <span>Total do ambiente</span>
+                    <span>Ainda não medido</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="controls">
+            <button class="btn" id="measure-btn">Medir Objeto</button>
+            <button class="btn" id="scan-room-btn">Mapear Ambiente</button>
+            <button class="btn btn-secondary" id="reset-btn">Limpar Medições</button>
+        </div>
+    </div>
+    
+    <script src="../static/js/main.js"></script>
+</body>
+</html>
