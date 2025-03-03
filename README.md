@@ -20,7 +20,7 @@ O **VisioScale** é um projeto inovador que permite medir objetos e mapear ambie
 
 ## Estrutura do Projeto
 ```
-MedidaExata/
+VisioScale/
 │-- app.py                # Código principal da aplicação Flask
 │-- templates/
 │   └── index.html        # Interface principal do sistema
@@ -41,7 +41,7 @@ MedidaExata/
 1. Clone o repositório:
    ```sh
    git clone https://github.com/negamin/VisioScale.git
-   cd medidaexata
+   cd VisioScale
    ```
 2. Instale as dependências:
    ```sh
